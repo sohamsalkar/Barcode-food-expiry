@@ -24,11 +24,10 @@ public class AlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         //Get notification manager to manage/send notifications
-
-
         //Intent to invoke app when click on notification.
         //In this sample, we want to start/launch this sample app when user clicks on notification
         Intent intentToRepeat = new Intent(context, MainActivity.class);
+
         //set flag to restart/relaunch the app
         intentToRepeat.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
@@ -56,18 +55,15 @@ public class AlarmReceiver extends BroadcastReceiver {
                 .setContentTitle(productNumbers+" "+ Constants.EXPIRY_NOTICE)
                 .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000})
                 .setContentText(Constants.EXPIRY_TEXT_)
-                //.setColor(Color.RED)
+
                 .setContentIntent(pendingIntent);
-        //gets default notification sound
+
         Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         builder.setSound(alarmSound);
 
         Notification notification = new Notification.InboxStyle(builder)
                 .addLine(addLine1)
-                //.addLine(addLine2)
-                //.addLine(addLine3)
-                /*.addLine(addLine4)
-                .addLine(addLine5)*/
+
                 .setBigContentTitle(Constants.EXPIRY_INBOX_ALERT)
                 .setSummaryText(remProducts+ " more")
                 .build();

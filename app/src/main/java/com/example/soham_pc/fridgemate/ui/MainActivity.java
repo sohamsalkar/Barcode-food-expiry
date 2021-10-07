@@ -77,17 +77,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         builder.setSmallIcon(R.drawable.badge_icon);
         return builder.build();
     }
-
-
-   /* @OnClick(R.id.tvSavedItems)
-    public void onTvSaveClick() {
-        startActivity(new Intent(this, RecyclerListActivity.class));
-    }*/
-
-    /*@OnClick(R.id.fab)
-    public void onFloatButtonClick() {
-        saveProductItem();
-    }*/
+    
 
     private void saveProductItem() {
         String item = edtItemName.getText().toString().trim();
@@ -143,14 +133,14 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == RC_BARCODE_CAPTURE) {
-
+        if (requestCode == RC_BARCODE_CAPTURE)
+        {
             if (resultCode == CommonStatusCodes.SUCCESS) {
                 if (data != null) {
                     Barcode barcode = data.getParcelableExtra(BarcodeCaptureActivity.BarcodeObject);
                     Toast.makeText(this, "Scanned Successfully", Toast.LENGTH_SHORT).show();
                     tvBcodeHeader.setVisibility(View.VISIBLE);
-                    tvBcodeHeader.setText( barcode.displayValue);
+                    tvBcodeHeader.setText(barcode.displayValue);
                     barCode = barcode.displayValue;
                     Log.d(TAG, "Barcode read: " + barcode.displayValue);
 
@@ -159,20 +149,21 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                     Toast.makeText(this, "No Barcode. Failed To Scan", Toast.LENGTH_SHORT).show();
                     Log.d(TAG, "No barcode captured, intent data is null");
                 }
-            } else {
+            }
+            else {
                 Toast.makeText(this, "Error Scanning", Toast.LENGTH_SHORT).show();
             }
-        } else if (requestCode == RC_OCR_CAPTURE) {
+        } //barcode ends  //date starts
+        else if (requestCode == RC_OCR_CAPTURE) {
             if (resultCode == CommonStatusCodes.SUCCESS) {
                 if (data != null) {
                     String text = data.getStringExtra(OcrCaptureActivity.TextBlockObject);
                     expiryDate = text;
                     if (!expiryDate.equals("")){
                         Toast.makeText(mContext, expiryDate, Toast.LENGTH_SHORT).show();
-                        //error
-                        String [] dateItem = expiryDate.split(" ");
+                        String [] dateItem = expiryDate.split("\\s+");
                         Log.e("ArrayLog__", dateItem[0] +dateItem[1]+dateItem[2]);
-                        if (dateItem.length == 3) {
+                        if (dateItem.length==3) {
                             int month = methods.getMonthNumber(dateItem[0]);
                             int day = Integer.parseInt(dateItem[1]);
                             int year = Integer.parseInt(dateItem[2]);
@@ -184,21 +175,13 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                                 calendar.set(Calendar.DAY_OF_MONTH, day);
                                 date = calendar.getTime();
                                 expiryTime = Objects.toString(date.getTime(), "0");
-                                /*datePickerDialog = new DatePickerDialog(this, MainActivity.this,
-                                        calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH)
-                                        , calendar.get(Calendar.DAY_OF_MONTH));
-                                datePickerDialog.show();*/
+
                             } else {
                                 Toast.makeText(mContext, "Invalid Date", Toast.LENGTH_SHORT).show();
                             }
                         }
                     }
-                   /* if (methods.getMonthNumber(text) != 0){
-                        Toast.makeText(this, text+" = "+methods.getMonthNumber(text), Toast.LENGTH_SHORT).show();
-                    }else {
-                        Toast.makeText(this, "Invalid Date", Toast.LENGTH_SHORT).show();
-                    }
-                    Log.d(TAG, "Text read: " + text);*/
+
                 } else {
                     Toast.makeText(this, "Scanned Failed", Toast.LENGTH_SHORT).show();
                     datePickerDialog.show();
@@ -229,4 +212,3 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
 
 }
-

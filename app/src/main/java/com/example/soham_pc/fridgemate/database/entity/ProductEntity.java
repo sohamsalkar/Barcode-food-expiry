@@ -8,7 +8,7 @@ import android.arch.persistence.room.PrimaryKey;
 @Entity(tableName = "products_table")
 public class ProductEntity {
 
-    //Defines your table fields
+    // table fields defn
     @PrimaryKey(autoGenerate = true)
     public int id;
 

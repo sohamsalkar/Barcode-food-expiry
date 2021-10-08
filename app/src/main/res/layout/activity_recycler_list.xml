@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.soham_pc.fridgemate.com.example.soham_pc.fridgemate.ui.RecyclerListActivity">
+    tools:context="com.example.soham_pc.fridgemate.ui.RecyclerListActivity">
     <android.support.v7.widget.RecyclerView
         android:id="@+id/productsList"
         android:scrollbars="vertical"

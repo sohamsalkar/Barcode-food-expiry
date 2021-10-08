@@ -35,8 +35,7 @@ import butterknife.OnClick;
 public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
     protected @BindView(R.id.itemName)
     EditText edtItemName;
-   /* protected @BindView(R.id.tvSavedItems)
-    TextView tvSavedProducts;*/
+
     protected @BindView(R.id.tvBcodeHeader)
     TextView tvBcodeHeader;
     protected @BindView(R.id.dateView)
@@ -55,7 +54,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private String expiryTime;
     Methods methods;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,8 +66,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         mContext=this;
 
     }
-
-
     private Notification getNotification(String content) {
         Notification.Builder builder = new Notification.Builder(this);
         builder.setContentTitle("Scheduled Notification");
@@ -77,7 +73,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         builder.setSmallIcon(R.drawable.badge_icon);
         return builder.build();
     }
-    
 
     private void saveProductItem() {
         String item = edtItemName.getText().toString().trim();
@@ -109,7 +104,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             case R.id.btSavedItems:
                saveProductItem();
                 break;
-
         }
     }
 
@@ -141,6 +135,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                     Toast.makeText(this, "Scanned Successfully", Toast.LENGTH_SHORT).show();
                     tvBcodeHeader.setVisibility(View.VISIBLE);
                     tvBcodeHeader.setText(barcode.displayValue);
+                    String [] barToName = (barcode.displayValue).split("-") ;
+                    edtItemName.setText(barToName[0]);
                     barCode = barcode.displayValue;
                     Log.d(TAG, "Barcode read: " + barcode.displayValue);
 
@@ -168,20 +164,20 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                             int day = Integer.parseInt(dateItem[1]);
                             int year = Integer.parseInt(dateItem[2]);
                             if (month != 0) {
+                                tvExpDate.setVisibility(View.VISIBLE);
+                                tvExpDate.setText(day+"/ "+month+"/ "+year);
                                 Toast.makeText(mContext, "Date Captured", Toast.LENGTH_SHORT).show();
                                 calendar = Calendar.getInstance();
                                 calendar.set(Calendar.YEAR, year);
-                                calendar.set(Calendar.MONTH, month);
+                                calendar.set(Calendar.MONTH, (month-1));
                                 calendar.set(Calendar.DAY_OF_MONTH, day);
                                 date = calendar.getTime();
                                 expiryTime = Objects.toString(date.getTime(), "0");
-
                             } else {
                                 Toast.makeText(mContext, "Invalid Date", Toast.LENGTH_SHORT).show();
                             }
                         }
                     }
-
                 } else {
                     Toast.makeText(this, "Scanned Failed", Toast.LENGTH_SHORT).show();
                     datePickerDialog.show();
@@ -194,8 +190,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
-
-
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -205,7 +199,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         date = calendar.getTime();
         expiryTime = Objects.toString(date.getTime(), "0");
     }
-
     private void setScannedDate(){
 
     }

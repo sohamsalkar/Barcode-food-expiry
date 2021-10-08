@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.soham_pc.fridgemate.ui.MainActivity">
+
     <android.support.v7.widget.CardView
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/scanBarcode"
@@ -30,11 +31,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 app:srcCompat="@drawable/barcode" />
-
         </LinearLayout>
-
-
-
 
     </android.support.v7.widget.CardView>
 
@@ -119,6 +116,15 @@
                     android:layout_weight="0.5"
                     android:text="Expiry Date: " />
 
+                <TextView
+                    android:id="@+id/dateView"
+                    android:layout_width="15dp"
+                    android:layout_height="18dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1.5"
+                    android:text="Date" />
+
                 <ImageView
                     android:id="@+id/scandate"
                     android:layout_width="50dp"
@@ -140,45 +146,6 @@
                     android:visibility="gone" />
 
             </LinearLayout>
-
-
-
-       <!-- <TextView
-            android:id="@+id/tvitemHeader"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/scanBarcode"
-            android:layout_alignStart="@+id/scanBarcode"
-            android:layout_below="@+id/tvBcodeHeader"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="80dp"
-            android:text="Coffee"
-            android:visibility="gone"
-            android:textColor="#FFC107"
-            />-->
-
-
-            <TextView
-                android:id="@+id/dateView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:text="TextView"
-                android:textColor="#FFC107"
-                android:visibility="gone" />
-
-
-       <!-- <Button
-            android:id="@+id/scandate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/itemName"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="20dp"
-            android:visibility="gone"
-            android:layout_marginRight="20dp"
-            android:text="Scan Date" />-->
 
         </RelativeLayout>
 
@@ -217,39 +184,4 @@
             android:text="View Products" />
 
     </LinearLayout>
-
-  <!--  <Button
-        android:id="@+id/scanBarcode"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/scandate"
-        android:layout_below="@id/card_view"
-        android:layout_marginTop="20dp"
-        android:layout_alignStart="@+id/scandate"
-        android:layout_marginRight="20dp"
-        android:text="Scan Barcode" />-->
-
-
-    <!--<android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_below="@id/datePicker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-
-
-        24
-        11
-        2021
-
-
-
-
-        android:visibility="gone"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="20dp"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_menu_save" />-->
-
-
 </RelativeLayout>

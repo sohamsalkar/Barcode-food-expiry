@@ -35,7 +35,6 @@ import butterknife.OnClick;
 public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
     protected @BindView(R.id.itemName)
     EditText edtItemName;
-
     protected @BindView(R.id.tvBcodeHeader)
     TextView tvBcodeHeader;
     protected @BindView(R.id.dateView)
@@ -64,8 +63,9 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         productViewModel = ViewModelProviders.of(this).get(ProductViewModel.class);
         methods = new Methods();
         mContext=this;
-
     }
+
+
     private Notification getNotification(String content) {
         Notification.Builder builder = new Notification.Builder(this);
         builder.setContentTitle("Scheduled Notification");
@@ -133,10 +133,13 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                 if (data != null) {
                     Barcode barcode = data.getParcelableExtra(BarcodeCaptureActivity.BarcodeObject);
                     Toast.makeText(this, "Scanned Successfully", Toast.LENGTH_SHORT).show();
-                    tvBcodeHeader.setVisibility(View.VISIBLE);
-                    tvBcodeHeader.setText(barcode.displayValue);
+                    //fetch name
                     String [] barToName = (barcode.displayValue).split("-") ;
                     edtItemName.setText(barToName[0]);
+                    tvBcodeHeader.setVisibility(View.VISIBLE);
+                    tvBcodeHeader.setText(barToName[1]);
+                    //tvBcodeHeader.setText(barcode.displayValue);
+
                     barCode = barcode.displayValue;
                     Log.d(TAG, "Barcode read: " + barcode.displayValue);
 
@@ -193,6 +196,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+        tvExpDate.setText(dayOfMonth+"/ "+month+"/ "+year);
         calendar.set(Calendar.YEAR, year);
         calendar.set(Calendar.MONTH, month);
         calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);

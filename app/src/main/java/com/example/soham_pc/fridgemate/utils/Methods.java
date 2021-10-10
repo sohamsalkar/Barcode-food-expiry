@@ -57,7 +57,6 @@ public  class Methods {
         } else if (compare1.equalsIgnoreCase("Dec")) {
             monthNumber = 12;
         }
-
         return monthNumber;
     }
 

@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/FridgeMate.iml" filepath="$PROJECT_DIR$/.idea/modules/FridgeMate.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/FridgeMate.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/FridgeMate.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/WhenExpires.iml" filepath="$PROJECT_DIR$/.idea/modules/WhenExpires.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/WhenExpires.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/WhenExpires.app.iml" />
     </modules>
   </component>
 </project>

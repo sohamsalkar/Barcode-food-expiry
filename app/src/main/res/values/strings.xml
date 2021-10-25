@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FridgeMate</string>
+    <string name="app_name">WhenExpires</string>
     <string name="scan_bcodebtn">Scan Barcode</string>
     <string name="scan_datebtn">Scan Barcode</string>
     <string name="item_header">Add Item</string>

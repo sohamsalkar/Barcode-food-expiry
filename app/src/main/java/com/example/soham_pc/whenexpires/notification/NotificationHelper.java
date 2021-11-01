@@ -34,8 +34,8 @@ public class NotificationHelper {
         calendar.setTimeInMillis(System.currentTimeMillis());
         //Setting time of the day (8am here) when notification will be sent every day (default)
         calendar.set(Calendar.HOUR_OF_DAY,
-                Integer.getInteger(hour, 15),
-                Integer.getInteger(min, 17));
+                Integer.getInteger(hour, 8),
+                Integer.getInteger(min, 00));
 
         //Setting intent to class where Alarm broadcast message will be handled
         Intent intent = new Intent(context, AlarmReceiver.class);
@@ -46,18 +46,12 @@ public class NotificationHelper {
         //getting instance of AlarmManager service
         alarmManagerRTC = (AlarmManager)context.getSystemService(ALARM_SERVICE);
 
-        //Setting alarm to wake up device every day for clock time.
-        //AlarmManager.RTC_WAKEUP is responsible to wake up device for sure, which may not be good practice all the time.
-        // Use this when you know what you're doing.
-        //Use RTC when you don't need to wake up device, but want to deliver the notification whenever device is woke-up
-        //We'll be using RTC.WAKEUP for demo purpose only
+
         alarmManagerRTC.setInexactRepeating(AlarmManager.RTC_WAKEUP,
                 calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, alarmIntentRTC);
     }
 
     /***
-     * This is another way to schedule notifications using the elapsed time.
-     * Its based on the relative time since device was booted up.
      * @param context
      */
     public static void scheduleRepeatingElapsedNotification(Context context) {

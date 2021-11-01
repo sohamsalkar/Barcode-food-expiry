@@ -8,10 +8,7 @@ import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 
 import com.example.soham_pc.whenexpires.database.entity.ProductEntity;
-
 import java.util.List;
-
-
 
 @Dao
 public interface ProductDao {

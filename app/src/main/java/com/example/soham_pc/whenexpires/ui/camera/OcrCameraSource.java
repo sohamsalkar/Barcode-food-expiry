@@ -187,10 +187,6 @@ public class OcrCameraSource {
             mOcrCameraSource.mContext = context;
         }
 
-        /**
-         * Sets the requested frame rate in frames per second.  If the exact requested value is not
-         * not available, the best matching available value is selected.   Default: 30.
-         */
         public Builder setRequestedFps(float fps) {
             if (fps <= 0) {
                 throw new IllegalArgumentException("Invalid fps: " + fps);
@@ -209,12 +205,6 @@ public class OcrCameraSource {
             return this;
         }
 
-        /**
-         * Sets the desired width and height of the camera frames in pixels.  If the exact desired
-         * values are not available options, the best matching available options are selected.
-         * Also, we try to select a preview size which corresponds to the aspect ratio of an
-         * associated full picture size, if applicable.  Default: 1024x768.
-         */
         public Builder setRequestedPreviewSize(int width, int height) {
             // Restrict the requested range to something within the realm of possibility.  The
             // choice of 1000000 is a bit arbitrary -- intended to be well beyond resolutions that
@@ -228,10 +218,7 @@ public class OcrCameraSource {
             return this;
         }
 
-        /**
-         * Sets the camera to use (either {@link #CAMERA_FACING_BACK} or
-         * {@link #CAMERA_FACING_FRONT}). Default: back facing.
-         */
+
         public Builder setFacing(int facing) {
             if ((facing != CAMERA_FACING_BACK) && (facing != CAMERA_FACING_FRONT)) {
                 throw new IllegalArgumentException("Invalid camera: " + facing);

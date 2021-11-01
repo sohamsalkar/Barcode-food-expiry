@@ -1,5 +1,4 @@
 package com.example.soham_pc.whenexpires.ui;
-
 import android.app.DatePickerDialog;
 import android.app.Notification;
 import android.arch.lifecycle.ViewModelProviders;
@@ -30,7 +29,6 @@ import java.util.Objects;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
 public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
     protected @BindView(R.id.itemName)
     EditText edtItemName;
